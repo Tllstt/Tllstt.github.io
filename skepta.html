@@ -17,13 +17,12 @@
             flex-direction: column;
             font-family: 'Roboto', sans-serif;
         }
-        /* Cacher l'image au début */
+        /* Affichage initial de l'image uniquement */
         #image {
             max-width: 100%;
             height: auto;
-            display: none;
         }
-        /* Cacher le gif et le texte au début */
+        /* Masquer le gif et le message au départ */
         #gif, #message {
             display: none;
         }
@@ -36,11 +35,11 @@
     </style>
 </head>
 <body>
-    <!-- L'image qui sera affichée après le clic -->
+    <!-- L'image rebeu.jpg est visible au départ -->
     <img src="rebeu.jpg" alt="Image" id="image">
-    <!-- Le bouton -->
+    <!-- Le bouton visible au départ -->
     <button id="playButton">Clique vas y kestia tu stress ?</button>
-    <!-- Le gif et le texte sont cachés au départ -->
+    <!-- Le gif et le message sont cachés au départ -->
     <img src="skepyy.gif" alt="GIF" id="gif">
     <h1 id="message">get cancuned</h1>
     <!-- L'audio -->
@@ -63,16 +62,14 @@
                 console.error('Audio play failed:', error);
             });
 
-            // Afficher l'image
-            image.style.display = 'block';
-
             // Afficher le GIF
             gif.style.display = 'block';
 
             // Afficher le message
             message.style.display = 'block';
 
-            // Cacher le bouton
+            // Cacher l'image et le bouton
+            image.style.display = 'none';
             playButton.style.display = 'none';
         });
     </script>
