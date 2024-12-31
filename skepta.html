@@ -112,6 +112,7 @@
                 });
                 audio3.play().catch(error => {
                     console.error('Audio3 play failed:', error);
+                    audio3.volume = 0.4;  
                 });
             }, 15000); // 15000 ms = 15 secondes
         });
