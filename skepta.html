@@ -47,7 +47,7 @@
     <h1 id="message">get cancuned</h1>
     
     <!-- Deuxième message (caché initialement) -->
-    <h1 id="message2">&#128125;</h1>
+    <h1 id="message2">Enjoy the moment!</h1>
     
     <!-- Premier fichier MP3 -->
     <audio id="sound">
@@ -55,21 +55,28 @@
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Deuxième fichier MP3 (caché initialement) -->
+    <!-- Deuxième fichier MP3 (alien.mp3) -->
     <audio id="sound2">
         <source src="alien.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Troisième fichier MP3 (second-music.mp3) -->
+    <audio id="sound3">
+        <source src="music2.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
     <script>
         const playButton = document.getElementById('playButton');
         const audio = document.getElementById('sound');
+        const audio2 = document.getElementById('sound2');
+        const audio3 = document.getElementById('sound3');
         const gif = document.getElementById('gif');
         const message = document.getElementById('message');
         const image = document.getElementById('image');
         const gif2 = document.getElementById('gif2');
         const message2 = document.getElementById('message2');
-        const audio2 = document.getElementById('sound2');
 
         playButton.addEventListener('click', () => {
             // Jouer le premier fichier audio
@@ -89,17 +96,22 @@
 
             // Après 15 secondes, changer le GIF et l'audio
             setTimeout(() => {
-                // Cacher le premier GIF et message
-                gif.style.display = 'none';
-                message.style.display = 'none';
+                // Arrêter le premier fichier audio
+                audio.pause(); // Arrêter le premier MP3
+                audio.currentTime = 0; // Revenir au début du premier MP3
 
                 // Afficher le deuxième GIF et message
-                gif2.style.display = 'block';
-                message2.style.display = 'block';
+                gif.style.display = 'none'; // Cacher le premier GIF
+                message.style.display = 'none'; // Cacher le premier message
+                gif2.style.display = 'block'; // Afficher le deuxième GIF
+                message2.style.display = 'block'; // Afficher le deuxième message
 
-                // Jouer le deuxième fichier audio
+                // Jouer le deuxième et troisième fichiers audio en même temps
                 audio2.play().catch(error => {
                     console.error('Audio2 play failed:', error);
+                });
+                audio3.play().catch(error => {
+                    console.error('Audio3 play failed:', error);
                 });
             }, 15000); // 15000 ms = 15 secondes
         });
