@@ -106,13 +106,16 @@
                 gif2.style.display = 'block'; // Afficher le deuxième GIF
                 message2.style.display = 'block'; // Afficher le deuxième message
 
+                audio2.volume = 1;
                 // Jouer le deuxième et troisième fichiers audio en même temps
                 audio2.play().catch(error => {
                     console.error('Audio2 play failed:', error);
                 });
+
+                audio3.volume = 0.2;  // Réduit le volume du troisième fichier audio à 20%
+                
                 audio3.play().catch(error => {
                     console.error('Audio3 play failed:', error);
-                    audio3.volume = 0.4;  
                 });
             }, 15000); // 15000 ms = 15 secondes
         });
