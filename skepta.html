@@ -17,13 +17,12 @@
             flex-direction: column;
             font-family: 'Roboto', sans-serif;
         }
-        /* Affichage initial de l'image uniquement */
         #image {
-            max-width: 100%;
+            width: 500px;
             height: auto;
         }
-        /* Masquer le gif et le message au départ */
-        #gif, #message {
+        /* Masquer les GIFs et les messages au départ */
+        #gif, #gif2, #message, #message2 {
             display: none;
         }
         button {
@@ -35,16 +34,30 @@
     </style>
 </head>
 <body>
-    <!-- L'image rebeu.jpg est visible au départ -->
     <img src="rebeu.jpg" alt="Image" id="image">
-    <!-- Le bouton visible au départ -->
     <button id="playButton">Clique vas y kestia tu stress ?</button>
-    <!-- Le gif et le message sont cachés au départ -->
+    
+    <!-- Premier GIF -->
     <img src="skepyy.gif" alt="GIF" id="gif">
+    
+    <!-- Deuxième GIF (caché initialement) -->
+    <img src="gif2.gif" alt="Second GIF" id="gif2">
+    
+    <!-- Premier message -->
     <h1 id="message">get cancuned</h1>
-    <!-- L'audio -->
+    
+    <!-- Deuxième message (caché initialement) -->
+    <h1 id="message2">&#128125;</h1>
+    
+    <!-- Premier fichier MP3 -->
     <audio id="sound">
         <source src="cancun.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Deuxième fichier MP3 (caché initialement) -->
+    <audio id="sound2">
+        <source src="alien.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -54,23 +67,41 @@
         const gif = document.getElementById('gif');
         const message = document.getElementById('message');
         const image = document.getElementById('image');
+        const gif2 = document.getElementById('gif2');
+        const message2 = document.getElementById('message2');
+        const audio2 = document.getElementById('sound2');
 
-        // Quand on clique sur le bouton
         playButton.addEventListener('click', () => {
-            // Jouer l'audio
+            // Jouer le premier fichier audio
             audio.play().catch(error => {
                 console.error('Audio play failed:', error);
             });
 
-            // Afficher le GIF
+            // Afficher le premier GIF
             gif.style.display = 'block';
 
-            // Afficher le message
+            // Afficher le premier message
             message.style.display = 'block';
 
             // Cacher l'image et le bouton
             image.style.display = 'none';
             playButton.style.display = 'none';
+
+            // Après 15 secondes, changer le GIF et l'audio
+            setTimeout(() => {
+                // Cacher le premier GIF et message
+                gif.style.display = 'none';
+                message.style.display = 'none';
+
+                // Afficher le deuxième GIF et message
+                gif2.style.display = 'block';
+                message2.style.display = 'block';
+
+                // Jouer le deuxième fichier audio
+                audio2.play().catch(error => {
+                    console.error('Audio2 play failed:', error);
+                });
+            }, 15000); // 15000 ms = 15 secondes
         });
     </script>
 </body>
