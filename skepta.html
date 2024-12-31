@@ -20,6 +20,11 @@
             height: auto;
             display: none;
         }
+        h1 {
+            display: none;
+            font-size: 2em;
+            margin-top: 20px;
+        }
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -28,9 +33,9 @@
     </style>
 </head>
 <body>
-    <h1>bien?</h1>
     <button id="playButton">Clique vas y kestia tu stress ?</button>
     <img src="skepyy.gif" alt="GIF" id="gif">
+    <h1 id="message">Get Cancuned!</h1>
     <audio id="sound">
         <source src="cancun.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -40,6 +45,7 @@
         const playButton = document.getElementById('playButton');
         const audio = document.getElementById('sound');
         const gif = document.getElementById('gif');
+        const message = document.getElementById('message');
 
         playButton.addEventListener('click', () => {
             // Play audio
@@ -49,6 +55,9 @@
 
             // Show GIF
             gif.style.display = 'block';
+
+            // Show the message
+            message.style.display = 'block';
 
             // Hide the button
             playButton.style.display = 'none';
