@@ -17,14 +17,15 @@
             flex-direction: column;
             font-family: 'Roboto', sans-serif;
         }
-        img {
+        /* Cacher l'image au début */
+        #image {
             max-width: 100%;
             height: auto;
-        }
-        h1 {
             display: none;
-            font-size: 2em;
-            margin-top: 20px;
+        }
+        /* Cacher le gif et le texte au début */
+        #gif, #message {
+            display: none;
         }
         button {
             padding: 10px 20px;
@@ -35,10 +36,14 @@
     </style>
 </head>
 <body>
+    <!-- L'image qui sera affichée après le clic -->
     <img src="rebeu.jpg" alt="Image" id="image">
+    <!-- Le bouton -->
     <button id="playButton">Clique vas y kestia tu stress ?</button>
+    <!-- Le gif et le texte sont cachés au départ -->
     <img src="skepyy.gif" alt="GIF" id="gif">
     <h1 id="message">get cancuned</h1>
+    <!-- L'audio -->
     <audio id="sound">
         <source src="cancun.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -51,23 +56,23 @@
         const message = document.getElementById('message');
         const image = document.getElementById('image');
 
-        // Cacher l'image lorsqu'on clique sur le bouton
+        // Quand on clique sur le bouton
         playButton.addEventListener('click', () => {
-            // Play audio
+            // Jouer l'audio
             audio.play().catch(error => {
                 console.error('Audio play failed:', error);
             });
 
-            // Show GIF
+            // Afficher l'image
+            image.style.display = 'block';
+
+            // Afficher le GIF
             gif.style.display = 'block';
 
-            // Show the message
+            // Afficher le message
             message.style.display = 'block';
 
-            // Hide the image
-            image.style.display = 'none';
-
-            // Hide the button
+            // Cacher le bouton
             playButton.style.display = 'none';
         });
     </script>
