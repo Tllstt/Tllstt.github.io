@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cancun</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -14,23 +15,30 @@
             background-color: black;
             color: white;
             flex-direction: column;
+            font-family: 'Roboto', sans-serif;
         }
         img {
             max-width: 100%;
             height: auto;
+        }
+        h1 {
             display: none;
+            font-size: 2em;
+            margin-top: 20px;
         }
         button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>bien?</h1>
+    <img src="rebeu.jpg" alt="Image" id="image">
     <button id="playButton">Clique vas y kestia tu stress ?</button>
     <img src="skepyy.gif" alt="GIF" id="gif">
+    <h1 id="message">get cancuned</h1>
     <audio id="sound">
         <source src="cancun.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -40,7 +48,10 @@
         const playButton = document.getElementById('playButton');
         const audio = document.getElementById('sound');
         const gif = document.getElementById('gif');
+        const message = document.getElementById('message');
+        const image = document.getElementById('image');
 
+        // Cacher l'image lorsqu'on clique sur le bouton
         playButton.addEventListener('click', () => {
             // Play audio
             audio.play().catch(error => {
@@ -49,6 +60,12 @@
 
             // Show GIF
             gif.style.display = 'block';
+
+            // Show the message
+            message.style.display = 'block';
+
+            // Hide the image
+            image.style.display = 'none';
 
             // Hide the button
             playButton.style.display = 'none';
