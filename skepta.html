@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkepDance</title>
+    <title>cancun</title>
     <style>
         body {
             display: flex;
@@ -18,22 +18,40 @@
         img {
             max-width: 100%;
             height: auto;
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>cancunnn</h1>
-    <img src="skepta.gif" alt="GIF">
-    <audio id="sound" autoplay>
+    <h1>bien?</h1>
+    <button id="playButton">Clique vas y kestia tu stress ?</button>
+    <img src="skepyy.gif" alt="GIF" id="gif">
+    <audio id="sound">
         <source src="cancun.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
     <script>
-        // Ensure sound plays automatically and loudly
+        const playButton = document.getElementById('playButton');
         const audio = document.getElementById('sound');
-        audio.volume = 1.0; // Set the volume to maximum
-        audio.play().catch(error => {
-            console.error('Auto-play failed:', error);
+        const gif = document.getElementById('gif');
+
+        playButton.addEventListener('click', () => {
+            // Play audio
+            audio.play().catch(error => {
+                console.error('Audio play failed:', error);
+            });
+
+            // Show GIF
+            gif.style.display = 'block';
+
+            // Hide the button
+            playButton.style.display = 'none';
         });
     </script>
 </body>
