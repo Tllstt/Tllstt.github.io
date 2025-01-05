@@ -44,10 +44,10 @@
     <img src="gif2.gif" alt="Second GIF" id="gif2">
     
     <!-- Premier message -->
-    <h1 id="message">get cancuned</h1>
+    <h1 id="message">tu t'es fait cancuned 😂🫵😂🫵😂🫵</h1>
     
     <!-- Deuxième message (caché initialement) -->
-    <h1 id="message2">Enjoy the moment!</h1>
+    <h1 id="message2">👽Zlorblux vaincra👽</h1>
     
     <!-- Premier fichier MP3 -->
     <audio id="sound">
@@ -106,10 +106,14 @@
                 gif2.style.display = 'block'; // Afficher le deuxième GIF
                 message2.style.display = 'block'; // Afficher le deuxième message
 
+                audio2.volume = 1;
                 // Jouer le deuxième et troisième fichiers audio en même temps
                 audio2.play().catch(error => {
                     console.error('Audio2 play failed:', error);
                 });
+
+                audio3.volume = 0.1;  // Réduit le volume du troisième fichier audio à 20%
+                
                 audio3.play().catch(error => {
                     console.error('Audio3 play failed:', error);
                 });
