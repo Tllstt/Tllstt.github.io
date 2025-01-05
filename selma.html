@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selma detector</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #image {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px; /* Set a fixed width */
+        height: auto; /* Maintain aspect ratio */
+        }
+        button {
+            margin-bottom: 20px;
+            padding: 15px 30px; /* Increased padding for a bigger button */
+            font-size: 20px; /* Increased font size */
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff5722, #ff9800);
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        button:active {
+            transform: scale(1.05);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <img id="image" src="" alt="Random Image">
+    <button id="playButton">selma?</button>
+    <audio id="soundEffect" src="BOOM.mp3"></audio>
+
+    <script>
+        const button = document.getElementById('playButton');
+        const image = document.getElementById('image');
+        const soundEffect = document.getElementById('soundEffect');
+    
+        // Array of image URLs
+        const images = [
+            'selma.jpg', // Red image
+            'selma2.jpg', // Green image
+            'selma3.jpg'  // Blue image
+        ];
+    
+        let currentIndex = 0;
+
+        button.addEventListener('click', () => {
+            // Play the sound effect without resetting it to the start, allowing overlap
+            soundEffect.play();
+    
+            // Select a random image
+            const randomIndex = Math.floor(Math.random() * images.length);
+            image.src = images[currentIndex];
+                
+            // Show the image for half a second
+            image.style.display = 'block';
+            setTimeout(() => {
+                image.style.display = 'none';
+            }, 300);
+            currentIndex = (currentIndex + 1) % images.length;
+        });
+    </script>    
+</body>
+</html>
